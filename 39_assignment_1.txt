@@ -1,0 +1,311 @@
+Program1:C program to find the sum of 'n' numbers.
+Roll no:39
+Name:Najmath M V
+Program code:
+#include<stdio.h>
+int main()
+{
+	int array[5],i,n,sum=0;
+	printf("ENTER THE ELEMENTS:");
+	scanf("%d",&n);
+	printf("enter the elements:\n");
+ 	for(i=0;i<n;i++)
+	{
+		scanf("%d",&array[i]);
+	}
+	for(i=0;i<n;i++)
+	{ 
+		sum=sum+array[i];
+	} 
+     	printf("%d",sum);
+     	return(0);
+}
+          
+   
+
+
+Program2:C program to merge two sorted arrays.
+Roll no:39
+Name:Najmath M V
+Program code:
+#include<stdio.h>
+
+void sort(int ary[],int lim);
+void display(int ary[],int lim);
+void merge(int ary1[],int lim1,int ary2[],int lim2); 
+int ary1[10],ary2[10],mergeary[20],lim1,lim2;
+int main ()
+{
+
+	int i,j,temp,lim3;
+	printf("Enter the limit of first array");
+	scanf("%d",&lim1);
+	printf("Enter the elements of array");
+	for (i=0;i<lim1;i++)
+	{
+
+		
+		scanf("%d",&ary1[i]);
+	}
+	printf("Unsorted first array is\n");
+	for(i=0;i<lim1;i++)
+	{
+		printf("%d ",ary1[i]);
+	}
+	
+	printf("Enter the limit of second array");
+	scanf("%d",&lim2);
+	printf("Enter the elements of array");
+	for (i=0;i<lim2;i++)
+	{
+		
+		scanf("%d",&ary2[i]);
+	}
+	printf("Unsorted second array is\n");
+	for(i=0;i<lim2;i++)
+	{
+		printf("%d ",ary2[i]);
+	}
+
+	
+	printf("Sorted first array is\n");
+	sort(ary1,lim1);
+	display(ary1,lim1);
+	printf("Sorted second array is\n");
+	sort(ary2,lim2);
+	display(ary2,lim2);
+	lim3=lim1+lim2;
+
+	printf("Merged array is\n");
+	merge(ary1,lim1,ary2,lim2);
+	display(mergeary,lim1+lim2);
+	printf("Sorted merged array is");
+	sort(mergeary,lim3);
+	display(mergeary,lim3);
+
+}
+	
+void sort(int ary[],int lim)
+{	
+int i,j,temp;
+
+for(i=0;i<lim-1;i++)
+{
+	for(j=i+1;j<lim;j++)
+	{
+		if(ary[i]>ary[j])
+		{
+			temp=ary[i];
+			ary[i]=ary[j];
+			ary[j]=temp;
+		}
+	}
+}
+}
+void merge(int ary1[],int lim1,int ary2[],int lim2)
+{
+	int i,j;
+	
+	for (i=0;i<lim1;i++)
+	{
+		mergeary[i]=ary1[i];
+	}
+	for (i=0;i<lim2;i++)
+	{
+		mergeary[lim1+i]=ary2[i];
+	}
+}
+void display(int ary[],int lim)
+{
+int i;
+for(i=0;i<lim;i++)
+	printf("%d ",ary[i]);
+}
+
+
+Program3:C program to create a STACK using array data structure and implement the operations PUSH, POP and TRAVESE.
+Roll no:39
+Name:Najmath M V
+Program code:
+#include<stdio.h>
+#define max 5
+int stack[max];
+int top=-1;
+void push();
+void pop();
+void traversal();
+int main()
+{       
+	int choice;
+	printf("1.push\n2.pop\n3.traversal\n4.exit\n");
+	do
+	{
+		printf("enter your choice");
+		scanf("%d",&choice);
+		switch(choice)
+		{
+			case 1:push();
+			break;
+			case 2:pop();
+			break;
+			case 3:traversal();
+			break;
+			case 4:printf("program exited\n");
+			break;
+			default:printf("wrong choice\n");
+			break;
+
+		}
+
+
+	}while(choice !=4);
+}
+
+void push()
+{    
+int element;
+if(top==max-1)
+{
+	printf("stack overflow");
+}
+else
+{    
+	printf("enter the element");
+	scanf("%d",&element);
+	top++;
+	stack[top]=element;
+
+}
+
+}
+void pop()
+{
+	int element;
+	if(top==-1)
+	{
+		printf("STACK EMPTY");
+	}
+	else
+	{
+		element=stack[top];
+		top--;
+		printf("element deleted is %d",element);
+	}
+}
+void traversal()
+{    
+	int i;
+	for(i=0;i<=top;i++)
+	{
+		printf("%d",stack[i]);
+	}
+}
+
+
+Program4:C program to create a QUEUE using array data structure and implement the operations ENQUEUE, DEQUEUE and TRAVERSE.
+Roll no:39
+Name:Najmath M V
+Program code:
+#include<stdio.h>
+#include<stdlib.h>
+#define max 4
+int queue[max];
+void enqueue();
+void dequeue();
+void traversal();
+int front=-1;
+int rear=-1;
+int item;
+int main()
+{
+	int choice;
+	do
+	{
+		printf("Enter your choice\n1 for Inserting an element\n2 for deleting an element\n3 for displaying all elements\n4 for exit");
+		scanf("%d",&choice);
+		switch(choice)
+		{
+			case 1:
+				enqueue();
+				break;
+			case 2:
+				dequeue();
+				break;
+			case 3:
+				traversal();
+				break;
+			case 4:
+				printf("You have exited the programme");
+				break;
+
+			default:
+				printf("Wrong Choice");
+				
+		}
+	}
+	while (choice!=4);
+	return(0);
+}
+void enqueue()
+{
+	
+	if (rear==max-1)
+		printf("The queue is full");
+	else
+	{	
+		printf("Enter the item to be inserted");
+		scanf("%d",&item);
+		if (front==-1)
+		{
+			front=0;
+			rear=rear+1;
+			queue[rear]=item;
+		}
+		else
+		{
+		rear=rear+1;
+		queue[rear]=item;
+		}
+	}
+}
+void dequeue()
+{
+	int element;
+	if (front==-1)
+		printf("The queue is empty");
+	else
+	{
+		element=queue[front];
+		if(front==rear)
+		{
+			front=-1;
+			rear=-1;
+			printf("The item deleted is %d",element); 
+		}
+		else
+		{
+		front=front+1;
+		printf("The item deleted is %d",element); 
+		}
+	}
+	
+}
+void traversal()
+{ 
+	int i;
+	if (front==-1)
+		printf("The queue is empty");
+	else
+	{
+		for(i=front;i<=rear;i++)
+		{
+			printf("%d",queue[i]);
+		}
+	}
+}
+
+
+
+
+
+
